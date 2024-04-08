@@ -5,3 +5,4 @@
 // - Do not use onclick - use addEventListener instead
 // - Run npm run test regularly to check autograding
 // - You'll need to link this file to your HTML :)
+console.log("Hello!");

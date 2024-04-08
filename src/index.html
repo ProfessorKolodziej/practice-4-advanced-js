@@ -6,19 +6,55 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Update your description here" />
-	<title>Update your title here</title>
+	<title>Rock Paper Scissors</title>
 	<!--
 		This is where you should link your CSS file.
 	-->
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 	<main class="content-container">
-		<h1>Welcome to your final project!</h1>
+		<section id="rps-intro" class="rps-section">
+			<h1>Rock, paper, scissors</h1>
+			<p>Can you outsmart a computer in three turns?</p>
+			<button>Start</button>
+		</section>
+		<section id="rps-move" class="rps-section">
+			<fieldset>
+				<legend>Choose your move</legend>
+				<div>
+					<input type="radio" id="rock" name="move" value="rock" checked />
+					<label for="rock">Rock</label>
+				</div>
+				
+				<div>
+					<input type="radio" id="paper" name="move" value="paper" />
+					<label for="paper">Paper</label>
+				</div>
+				
+				<div>
+					<input type="radio" id="scissors" name="move" value="scissors" />
+					<label for="scissors">Scissors</label>
+				</div>
+			</fieldset>
+		</section>
+		<section id="rps-result" class="rps-section">
+			<aside class="rps-score">
+				<p>Your score: <span id="rps-your-score">0</span></p>
+				<p>Computer score: <span id="rps-comp-score">0</span></p>
+			</aside>
+			<section>
+				<div class="rps-player"></div>
+				<h2 id="current-result">Result</h2>
+				<div class="rps-computer"></div>
+			</section>
+		</section>
 	</main>
 	<!--
 		This is where you should link your JS file.
 	-->
+	<script src="js/scripts.js"></script>
 </body>
 
 </html>
