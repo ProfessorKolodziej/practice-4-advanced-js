@@ -10,33 +10,34 @@
 	<!--
 		This is where you should link your CSS file.
 	-->
+	<link rel="stylesheet" href="https://use.typekit.net/pyp5fni.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 	<main class="content-container">
 		<section id="rps-intro" class="rps-section">
-			<h1>Rock, paper, scissors</h1>
-			<p>Can you outsmart a computer in three turns?</p>
-			<button>Start</button>
+			<div class="rps-content">
+				<h1>Rock, paper, scissors</h1>
+				<p>Can you outsmart a computer in three turns?</p>
+				<button>Start</button>
+			</div>
 		</section>
 		<section id="rps-move" class="rps-section">
-			<fieldset>
+			<fieldset class="rps-content">
 				<legend>Choose your move</legend>
-				<div>
+				<label for="rock" class="rps-move rps-move-rock">
 					<input type="radio" id="rock" name="move" value="rock" checked />
-					<label for="rock">Rock</label>
-				</div>
-				
-				<div>
+					Rock
+				</label>
+				<label for="paper" class="rps-move rps-move-paper">
 					<input type="radio" id="paper" name="move" value="paper" />
-					<label for="paper">Paper</label>
-				</div>
-				
-				<div>
+					Paper
+				</label>
+				<label for="scissors" class="rps-move rps-move-scissors">
 					<input type="radio" id="scissors" name="move" value="scissors" />
-					<label for="scissors">Scissors</label>
-				</div>
+					Scissors
+				</label>
 			</fieldset>
 		</section>
 		<section id="rps-result" class="rps-section">
@@ -44,11 +45,14 @@
 				<p>Your score: <span id="rps-your-score">0</span></p>
 				<p>Computer score: <span id="rps-comp-score">0</span></p>
 			</aside>
-			<section>
-				<div class="rps-player"></div>
+			<section class="rps-content rps-results-content">
+				<div class="rps-player shake"></div>
 				<h2 id="current-result">Result</h2>
-				<div class="rps-computer"></div>
+				<div class="rps-computer shake"></div>
 			</section>
+			<div class="rps-tryagain">
+				<button>Try Again</button>
+			</div>
 		</section>
 	</main>
 	<!--

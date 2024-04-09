@@ -7,4 +7,175 @@ primary color variable below.
 
 body {
 	background-color: #FFE924;
+	font-family: "chainprinter", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+}
+
+.rps-section {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	text-align: center;
+}
+
+h1,
+h2 {
+	font-size: 7vw;
+	max-width: 12ch;
+	margin: 0 auto .5em;
+}
+
+p {
+	font-size: 3vw;
+	max-width: 28ch;
+	margin: 0 auto 1.25em;
+}
+
+button {
+	background-color: transparent;
+	border: 5px solid #000;
+	font-size: 5.25vw;
+	font-family: inherit;
+	padding: .5em 1.5em;
+
+	&:hover {
+		background-color: #000;
+		color: #FFE924;
+		cursor: pointer;
+	}
+}
+
+fieldset {
+	border: none;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+}
+
+legend {
+	font-size: 5.25vw;
+	width: 100%;
+}
+
+.rps-move {
+	width: 100%;
+	height: 20vw;
+	display: flex;
+  	align-items: end;
+	justify-content: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	transition: transform .15s ease-in;
+
+	input {
+		opacity: 0;
+		position: absolute;
+	}
+
+	&:hover {
+		cursor: pointer;
+		transform: scale(1.1);
+	}
+}
+
+.rps-move-rock {
+	background-image: url("../images/rock.jpg");
+}
+
+.rps-move-paper {
+	background-image: url("../images/paper.jpg");
+}
+
+.rps-move-scissors {
+	background-image: url("../images/scissors.jpg");
+}
+
+.rps-score {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	width: 100%;
+	align-self: top;
+}
+
+.rps-results-content {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	min-height: 33vh;
+}
+
+h2 {
+	/*max-width: 4ch;*/
+	display: flex;
+	align-items: center;
+}
+
+.rps-player,
+.rps-computer {
+	background-image: url("../images/rock.jpg");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.rps-computer {
+	transform: scaleX(-1);
+}
+
+.rps-tryagain {
+	padding: 5vw;
+	align-self: end;
+}
+  
+.shake {
+	animation: shake .5s infinite;
+	animation-iteration-count: 3;
+	transform-origin: bottom left;
+}
+
+.rps-computer.shake {
+	animation: shakeright .5s infinite;
+	animation-iteration-count: 3;
+	transform-origin: bottom left;
+	transform: scaleX(-1) translateX(-100%);
+}
+
+@keyframes shake {
+	0% {
+		transform: rotate(0deg)
+	}
+	33% {
+		transform: rotate(-10deg)
+	}
+	66% {
+		transform: rotate(10deg)
+	}
+	100% {
+		transform: rotate(0deg)
+	}
+}
+
+@keyframes shakeright {
+	0% {
+		transform: scaleX(-1) translateX(-100%) rotate(0deg);
+	}
+	33% {
+		transform: scaleX(-1) translateX(-100%) rotate(-10deg);
+	}
+	66% {
+		transform: scaleX(-1) translateX(-100%) rotate(10deg);
+	}
+	100% {
+		transform: scaleX(-1) translateX(-100%) rotate(0deg);
+	}
 }
