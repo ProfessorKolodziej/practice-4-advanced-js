@@ -22,18 +22,68 @@ function goToNext() {
 
 startBtn.addEventListener("click", goToNext);
 
+// Random moves for the computer
+const moves = [
+	"rock",
+	"paper",
+	"scissors"
+]
+
+function randomMove() {
+	const min = 0;
+	const max = 2;
+	const random = Math.round(Math.random() * (max - min) + min);
+	return moves[random];
+}
+
+// Check who the winner is, if any
+function checkWinner(playerMove, computerMove) {
+	let winner = null;
+
+	if ( playerMove === computerMove ) {
+		/* Return null (no winner) immediately if it's a draw) */
+		return winner;
+	} 
+	/* All win conditions for player */
+	else if (
+		(playerMove === "rock" && computerMove === "scissors") ||
+		(playerMove === "paper" && computerMove === "rock") ||
+		(playerMove === "scissors" && computerMove === "paper")
+	) {
+		winner = "player";
+	} else {
+		winner = "computer";
+	}
+
+	return winner;
+}
+
+// Update the results slide
+function updateResultsSlide(playerMove, computerMove) {
+	console.log("Player move is:", playerMove);
+	console.log("Computer move is:", computerMove);
+	const winner = checkWinner(playerMove, computerMove);
+	console.log(winner);
+}
+
 // Event delegation lets us do the same event for a larger area,
 // and we "delegate" - or check - if the element is a certain class
 // to know if we want to go forward.
 
 const moveSelect = document.querySelector('#js-moves');
 
-moveSelect.addEventListener("click", function(event) {
-	if (event.target.classList.contains('rps-move')) {
-		//console.log(event.target);
-		goToNext.call(event.target);
+function checkSelectedMove(event) {
+	const selected = event.target;
+
+	if (selected.classList.contains('rps-move')) {
+		const playerMove = selected.firstElementChild.value;
+		const computerMove = randomMove();
+		goToNext.call(selected);
+		updateResultsSlide(playerMove, computerMove);
 	}
-});
+}
+
+moveSelect.addEventListener("click", checkSelectedMove);
 
 // Last event listener!
 const tryAgainBtn = document.querySelector('#js-tryagain');
