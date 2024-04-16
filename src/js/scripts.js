@@ -58,12 +58,63 @@ function checkWinner(playerMove, computerMove) {
 	return winner;
 }
 
+let playerScore = 0,
+		computerScore = 0;
+
 // Update the results slide
 function updateResultsSlide(playerMove, computerMove) {
-	console.log("Player move is:", playerMove);
-	console.log("Computer move is:", computerMove);
 	const winner = checkWinner(playerMove, computerMove);
-	console.log(winner);
+
+	// Change the animation to show the chosen move
+	const playerAnimation = document.querySelector('.rps-player');
+	const computerAnimation = document.querySelector('.rps-computer');
+	const resultText = document.querySelector('#current-result');
+
+	// Reset the animation and wording to defaults while shaking
+	playerAnimation.style.backgroundImage = `url("../images/rock.jpg")`;
+	computerAnimation.style.backgroundImage = `url("../images/rock.jpg")`;
+	resultText.innerText = "...";
+
+	// Update results on the third shake
+	setTimeout(function() {
+		playerAnimation.style.backgroundImage = `url("../images/${playerMove}.jpg")`;
+		computerAnimation.style.backgroundImage = `url("../images/${computerMove}.jpg")`;
+		
+		// Display "You Win", "You Lose", or "Draw" depending on who won
+		if (winner === "player") {
+			resultText.innerText = "You win";
+			playerScore++;
+		} else if (winner === "computer") {
+			resultText.innerText = "You lose";
+			computerScore++;
+		} else {
+			resultText.innerText = "Draw";
+		}
+
+		// Update the scores in the interface
+		const playerScoreDisplay = document.querySelector('#rps-your-score');
+		const computerScoreDisplay = document.querySelector('#rps-comp-score');
+
+		playerScoreDisplay.innerText = playerScore;
+		computerScoreDisplay.innerText = computerScore;
+	}, 1200);
+
+	// If either player made it to 3 points, update the page to say they won
+	setTimeout(function() {
+		const resultsContainer = document.querySelector('#rps-result');
+
+		if ( playerScore === 3 ) {
+			resultText.innerText = "You beat the computer!"
+			resultsContainer.classList.add('end-result');
+			playerScore = 0;
+			computerScore = 0;
+		} else if ( computerScore === 3 ) {
+			resultText.innerText = "You did not beat the computer."
+			resultsContainer.classList.add('end-result');
+			playerScore = 0;
+			computerScore = 0;
+		}
+	}, 2200);
 }
 
 // Event delegation lets us do the same event for a larger area,

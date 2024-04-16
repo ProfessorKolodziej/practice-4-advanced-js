@@ -117,6 +117,8 @@ legend {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	min-height: 33vh;
+	width: 100%;
+	overflow: hidden;
 }
 
 h2 {
@@ -130,6 +132,7 @@ h2 {
 	background-image: url("../images/rock.jpg");
 	background-size: contain;
 	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .rps-computer {
@@ -145,6 +148,8 @@ h2 {
 	animation: shake .5s infinite;
 	animation-iteration-count: 3;
 	transform-origin: bottom left;
+	transform: translateX(0);
+	transition: transform .5s ease-in;
 }
 
 .rps-computer.shake {
@@ -181,5 +186,18 @@ h2 {
 	}
 	100% {
 		transform: scaleX(-1) translateX(-100%) rotate(0deg);
+	}
+}
+
+.end-result {
+	.rps-player {
+		/*transform: translateX(-100%);*/
+		opacity: 0;
+	}
+	
+	.rps-computer {
+		/*transform: translateX(100%);
+		transform: scaleX(-1);*/
+		opacity: 0;
 	}
 }
